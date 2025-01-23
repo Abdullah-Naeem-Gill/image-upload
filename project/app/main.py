@@ -21,17 +21,9 @@ async def on_startup():
         raise HTTPException(status_code=500, detail="Error initializing the database")
 
 async def get_db() -> AsyncSession:
-    """
-    Dependency that provides an async database session to route handlers.
-    """
+    
     async with SessionLocal() as db:
         yield db
 
 app.include_router(upload_router)
 
-@app.get("/")
-async def read_root():
-    """
-    Basic root endpoint to confirm the API is working.
-    """
-    return {"message": "Welcome to the Image Upload API!"}

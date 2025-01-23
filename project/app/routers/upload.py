@@ -29,11 +29,7 @@ BASE_DIR.mkdir(parents=True, exist_ok=True)
 
 @router.post("/upload_image/")
 async def upload_image(file: UploadFile = File(...), db: AsyncSession = Depends(get_db)):
-    """
-    Endpoint for uploading an image.
-    Saves the uploaded image to the 'Data' directory (inside a date-based folder)
-    and stores metadata in the database.
-    """
+    
     try:
         logger.info(f"Received file: {file.filename}")
         
