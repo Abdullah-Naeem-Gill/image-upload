@@ -28,10 +28,7 @@ SessionLocal = sessionmaker(
 )
 
 async def get_db() -> AsyncSession:
-    """
-    Dependency function to get the database session.
-    The session is automatically closed once the request is completed.
-    """
+    
     try:
         async with SessionLocal() as session:
             yield session
